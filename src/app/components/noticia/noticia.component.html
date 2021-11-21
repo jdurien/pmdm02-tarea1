@@ -7,10 +7,10 @@
   <ion-card-content>
     <p>
       {{noticia.description}}
-    </p>   
+    </p>
   </ion-card-content>
   <ion-item>
     <ion-icon slot="end" name="trash-outline" (click)="onClick()"></ion-icon>
-    <ion-label><a [href]="noticia.url">Leer</a></ion-label>
+    <ion-label><a [href]="noticia.url" target="_blank">Leer</a></ion-label>
   </ion-item>
 </ion-card>
