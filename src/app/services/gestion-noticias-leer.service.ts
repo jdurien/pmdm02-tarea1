@@ -1,3 +1,4 @@
+import { GestionFicherosService } from './gestion-ficheros.service';
 import { Article } from './../interfaces/interfaces';
 import { Injectable } from '@angular/core';
 
@@ -8,18 +9,27 @@ export class GestionNoticiasLeerService {
 
   private noticiasLeer: Article [] = [];
 
-  constructor() {
+ // constructor (){}
+  constructor(private gestionFicheros: GestionFicherosService) {
+  
+  //  20211130
+  let datosPromesa: Promise <Article[]> = gestionFicheros.getObject("Noticia");
+  datosPromesa.then(datos => {
+    this.noticiasLeer.push(...datos);
+  })
 
+   
   }
 
   addNoticia(item) {
     // copiar item
     let itemString = JSON.stringify(item);
-    item = JSON.parse(itemString);
+    let itemParse = JSON.parse(itemString);
 
     // Añadirlo
-    this.noticiasLeer.push(item);
+    this.noticiasLeer.push(itemParse); // añade el item (enviado desde )
     // console.log(this.noticiasLeer);
+    this.gestionFicheros.setObject("Noticia",this.noticiasLeer); //20211130
   }
 
   buscar(item: Article): number  {
@@ -36,7 +46,9 @@ export class GestionNoticiasLeerService {
     let indice = this.buscar(item);
     if (indice != -1) {
       this.noticiasLeer.splice(indice, 1);
+      
       // console.log(this.noticiasLeer); 
+      this.gestionFicheros.setObject("Noticia",this.noticiasLeer); //20211130
     }
   }
 

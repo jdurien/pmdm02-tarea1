@@ -7,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./noticias.component.scss'],
 })
 export class NoticiasComponent implements OnInit {
-  @Input() listaNoticias: Article[];
+  @Input() listaNoticias: Article[]; //la variable listaNoticias es un Array de artículos
 
   constructor() { }
 

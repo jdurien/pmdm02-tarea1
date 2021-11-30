@@ -9,37 +9,37 @@ import { AlertController } from '@ionic/angular';
   styleUrls: ['./noticia.component.scss'],
 })
 export class NoticiaComponent implements OnInit {
-  @Input() noticia: Article;
+  @Input() noticia: Article;    // en la varible noticia meto un artículo.
 
   constructor(private gestionNoticiasLeer: GestionNoticiasLeerService, private alertController: AlertController) { }
 
   ngOnInit() {}
 
   onClick() {
-    this.confirmarBorrar();
+    this.confirmarBorrar(); // esta opción es la Asíncrona que se desarrolla a continuación
   
   }
 
   async confirmarBorrar() {
-    const alert = await this.alertController.create({
+    const alerta = await this.alertController.create({   // crea la ventana de notificaciones y la devuelve a la variable alerta en forma de promesa
       header: 'Confirmar',
-      message: 'Borrar noticia?',
+      message: '¿Borrar noticia?',
       buttons: [
         {
-          text: 'Cancel',
+          text: 'Cancelar',
           role: 'cancel',
           cssClass: 'secondary'
         }, {
-          text: 'Okay',
+          text: 'Borrar',
           handler: () => {
-            console.log('Confirm Okay');
-            this.gestionNoticiasLeer.borrarNoticia(this.noticia);
+            console.log('Confirmar borrado');
+            this.gestionNoticiasLeer.borrarNoticia(this.noticia); // esta opción en gestionNoticiasLeer.service
           }
         }
       ]
     });
 
-    await alert.present();
+    await alerta.present();   // muestra la ventana creada.
   }
 
 }

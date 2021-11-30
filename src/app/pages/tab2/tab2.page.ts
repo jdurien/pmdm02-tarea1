@@ -1,3 +1,4 @@
+import { GestionFicherosService } from './../../services/gestion-ficheros.service';
 import { GestionNoticiasLeerService } from './../../services/gestion-noticias-leer.service';
 import { Article } from './../../interfaces/interfaces';
 import { Component } from '@angular/core';
@@ -12,7 +13,7 @@ export class Tab2Page {
   // Creo e inicializo un array vacío
   listaNoticias: Article[] = [];
 
-  constructor(public gestionNoticiasLeer: GestionNoticiasLeerService) {
+  constructor(public gestionNoticiasLeer: GestionNoticiasLeerService, public gestionFicheros: GestionFicherosService) {
 
   }
 
