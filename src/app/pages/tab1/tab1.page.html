@@ -1,20 +1,16 @@
-
-  <ion-tab-bar slot="top">
-    <ion-tab-button tab="general">
-      <ion-label>GENERAL</ion-label>
-    </ion-tab-button>
-    <ion-tab-button tab="business">
-      <ion-label>BUSINESS</ion-label>
-    </ion-tab-button>
-    <ion-tab-button tab="technology">
-      <ion-label>TECHNOLOGY</ion-label>
-    </ion-tab-button>
-    <ion-tab-button tab="science">
-      <ion-label>SCIENCE</ion-label>
-    </ion-tab-button>
-  </ion-tab-bar>
-
-
+<!--
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="25">
+        <ion-segment>
+            <ion-segment-button *ngFor=" let categoria of categorias" value={{categoria}}>
+              <ion-label>{{categoria}}</ion-label>
+            </ion-segment-button>
+        </ion-segment>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+-->
 <ion-header class="ion-no-border">
 
   <ion-toolbar>
@@ -24,7 +20,24 @@
   </ion-toolbar>
 </ion-header>
 
+
+
 <ion-content>
+
+<!-- menú superior -->
+<ion-grid fixed>
+  <ion-row>
+    <ion-col size="12">
+      <ion-segment scrollable>
+          <ion-segment-button *ngFor=" let categoria of categorias" value={{categoria}}>
+            <ion-label>{{categoria}}</ion-label>
+          </ion-segment-button>
+      </ion-segment>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+<!-- fin menú superior -->
+
   <ion-list *ngFor="let item of listaNoticias">
     <ion-item>
       <ion-checkbox color="primary" slot="start" (ionChange)="check($event, item)"></ion-checkbox>

@@ -19,14 +19,17 @@ const routes: Routes = [
         path: '',
         redirectTo: '/tabs/noticias',
         pathMatch: 'full'
-      }
+      },
+      
     ]
   },
   {
     path: '',
     redirectTo: '/tabs/noticias',
     pathMatch: 'full'
-  }
+  },
+ 
+
 ];
 
 @NgModule({
